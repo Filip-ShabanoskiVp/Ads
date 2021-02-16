@@ -8,3 +8,5 @@ Programming language that I use is this application is c#.
 Front-end of the application is made with the help of Razor pages.
 For data persistence I chose to use postgreSql, which is for me one of the best 3 free and 
 open-source relational database management system emphasizing extensibility and SQL compliance.
+
+![00](https://user-images.githubusercontent.com/52547885/108103955-f26d9e00-708a-11eb-8ce0-fe42a2ac7fa4.jpg)
