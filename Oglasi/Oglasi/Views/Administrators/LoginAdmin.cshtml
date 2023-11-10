@@ -1,0 +1,44 @@
+﻿@model Oglasi.Models.Administrator
+
+
+<h4>Најавете се</h4>
+
+<h1>@ViewBag.Message</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LoginAdmin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KorisnickoIme" class="control-label"></label>
+                <input asp-for="KorisnickoIme" class="form-control" />
+                <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lozinka" class="control-label"></label>
+                <input asp-for="lozinka" class="form-control" type="password" />
+                <span asp-validation-for="lozinka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Улога</label>
+                <ul style="list-style:none;cursor:pointer">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">Изберете улога</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="Administrators" asp-action="LoginAdmin">Администратор</a>
+                        <a class="dropdown-item" asp-controller="Korisniks" asp-action="Signin">Обичен корисник</a>
+                    </div>
+                </li>
+                </ul>
+            </div>
+            <div>
+                <input type="submit" value="Најавете се" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

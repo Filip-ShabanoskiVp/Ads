@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Oglasi.Models.Oglas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<br />
+<br />
+
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-header">
+<h1>Огласи</h1>
+            </div>
+            <div class="card-body">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeOglas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImeOglas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+
+            <td>
+
+                <a asp-action="Details" asp-route-id="@item.IdOglas" class="btn btn-primary">Details</a>
+            
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+                </div>
+            </div>
+        </div>
+

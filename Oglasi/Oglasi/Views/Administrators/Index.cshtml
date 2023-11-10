@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Oglasi.Models.Administrator>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Корисничко име: @ViewBag.KorisnickoImeAdmin</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imeadmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezimeadmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KorisnickoIme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lozinka)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.KorisnickoIme == @ViewBag.KorisnickoImeAdmin)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Imeadmin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezimeadmin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KorisnickoIme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lozinka)
+                    </td>
+                    <td>
+                        |
+                        <a asp-action="Details" asp-route-id="@item.IdVraboten">Mails</a> |
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="border:1px solid black">
+    <form>
+        <div>
+            <label>To</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div>
+            <label>Subject</label>
+            <input type="text" class="form-control" />
+        </div>
+        <label>Body</label>
+        <input type="text" class="form-control" />
+        <button type="submit" class="btn btn-primary" style="height: 40px;width:200px">Send</button>
+    </form>
+</div>

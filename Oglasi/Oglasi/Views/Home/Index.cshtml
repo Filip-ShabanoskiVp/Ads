@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Oglasi.Models.Kategorija>
+
+
+
+
+<style>
+</style>
+
+<br />
+<br />
+<br />
+<br />
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner">
+        @*<div class="carousel-item active">
+                Kategorii
+            </div>*@
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item text-center p-2">
+                <h2>@item.ImeKat</h2>
+                <span>
+                    @item.BrojNaOglasi
+                </span>
+            </div>
+            <br />
+        }
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<input type="button" id="open_ad" value="Отвори огласи" class="btn btn-info" @*onclick='window.location.href = "@Url.Action("Index", "Oglas")"'*@ />
+<input type="button" value="Додади оглас" class="btn btn-info" onclick='window.location.href = "@Url.Action("Create", "Oglas")"' />
+<input type="button" id="open_all" value="Отвори ги сите огласи" class="btn btn-info" onclick='window.location.href = "@Url.Action("Index", "Oglas")"' />
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $(".carousel-inner").children(":first").toggleClass("active");
+    });
+    $("#open_ad").on("click", () => {
+        let ImeKat = $(".carousel-item.active>h2").html();
+        //if ImeKat
+        //alert(ImeKat);
+        if (ImeKat == "Возила") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 1 })';
+            window.location.href = url;
+        }
+        else if (ImeKat == "Литература") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 2 })';
+            window.location.href = url;
+        }
+        else if (ImeKat == "Недвижнини") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 3 })';
+            window.location.href = url;
+        }
+        else if (ImeKat == "За дом") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 4 })';
+            window.location.href = url;
+        }
+        else if (ImeKat == "Технологија") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 5 })';
+            window.location.href = url;
+        }
+        else if (ImeKat == "Спорт и спортска опрема") {
+            var url = '@Url.Action("Index", "Oglas", new { id = 6 })';
+            window.location.href = url;
+        }
+    });
+
+</script>

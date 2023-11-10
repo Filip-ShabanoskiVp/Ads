@@ -1,0 +1,71 @@
+﻿@model Oglasi.Models.UserOglasi
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+@*@{
+        if (User.Identity.IsAuthenticated)
+        {
+
+            <h2>You are logged in!</h2>
+        }
+
+    }*@
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h1>Мој огласи</h1>
+            </div>
+        <div class="card-body">
+                <table class="table" style="border:1px solid gray">
+                    <thead style="background-color:DarkCyan">
+                    <th><a id="zacuvani" href="#" style="color:white;text-decoration:none">Зачувани огласи</a></th>
+                    <th><a id="preporacani" href="#" style="color:white;text-decoration:none">Препорачани огласи</a></th>
+                    <th><a id="kupeni" href="#" style="color:white;text-decoration:none">Купени огласи</a></th>
+                    </thead>
+                    <tbody style="background-color:white">
+                        <tr>
+                            <td id="zac">
+                                @foreach (var i in Model.Saved)
+                                {
+                                    <p>@i.ImeOglas</p>
+                                }
+                            </td>
+                            <td id="prep">
+                                @foreach (var ind in Model.Recomended)
+                                {
+                                    <p>@ind.ImeOglas</p>
+                                }
+                            </td>
+                            <td id="kup">
+                                @foreach (var inde in Model.Bought)
+                                {
+                                    <p>@inde.ImeOglas</p>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+            @section Scripts{
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+                        crossorigin="anonymous"></script>
+                <script>
+
+                </script>
+            }
+
+
+

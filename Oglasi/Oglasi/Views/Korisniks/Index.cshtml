@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Oglasi.Models.Korisnik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="card mb-4">
+        <div class="card-header"
+<h1>Криснички профили</h1>
+        </div>
+<br />
+ <div class="card-body">
+<h3>Корисничко име: @ViewBag.KorisnickoIme</h3>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeKor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrezimeKor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonskiBroj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.KorisnickoIme == @ViewBag.KorisnickoIme)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImeKor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrezimeKor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelefonskiBroj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ulica)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grad)
+                    </td>
+                    <td>
+
+                        <a asp-action="Details" asp-route-id="@item.KorisnickoIme" class="btn btn-primary">Details</a> 
+
+                        @*<input type="button" id="btnIspratiPoraka" value="Прати порака" class="btn btn-light" />
+                        <div class="modal" id="pratiPorakaModal">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Меил адреса до:</label>
+                                                <input type="text" class="form-control" id="txtmailAddressAdmin" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Опис:</label>
+                                                <input type="text" class="form-control" id="txtOpis" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-primary" value="Испрати" id="btnIsprati" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                        @* <a asp-action="Delete" asp-route-id="@item.KorisnickoIme">Delete</a>*@
+                    </td>
+}
+            </tr>
+        }
+    </tbody>
+</table>
+     </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function () {
+        $("#btnIspratiPoraka").click(function () {
+            $("#pratiPorakaModal").modal("show");
+        });
+        $("#btnIsprati").click(function () {
+            $("#pratiPorakaModal").modal("hide");
+        });
+    });
+    </script>
+}
